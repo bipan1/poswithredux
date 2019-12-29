@@ -1,25 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import Home from './templates/Home'
+import Category from './templates/Category'
+import ProductDescription from './templates/ProductDescription'
+import Header from './components/Header'
+import Confirmation from './templates/Confirmation'
+import './App.scss';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  
+    <BrowserRouter>
+    <React.Fragment>
+      <Header/>
+      <Switch>
+        <Redirect from="/home" to="/"/>
+        <Route exact path="/" component={Home}/>
+        <Route path="/category" component={Category}/>
+        <Route path="/product" component={ProductDescription}/>
+        <Route path="/confirmation" component={Confirmation}/>
+
+      </Switch>
+    </React.Fragment>
+  </BrowserRouter>
+     
   );
 }
 

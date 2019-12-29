@@ -1,0 +1,35 @@
+
+
+$blue: #1E86F9;
+$yellow:#F9A11E;
+$pink:#FFD2E4;
+$pitch:#FED8D1;
+$cyan:#CEE2FF;
+$gray-100:#E8E8E8;
+$light:$gray-100;
+$gray-800:#1a1a1a;
+$dark:$gray-800;
+
+$brown:#E9CACA;
+$orange:#FFE8C8;
+
+$body-bg:#FCFCFC;
+
+//fonts
+$font-family-sans-serif:'Nunito Sans', sans-serif;
+
+$body-bg:#F2F2F2;
+
+//enable gradient
+$enable-gradients:true;
+
+//input fields
+
+$input-btn-padding-y:.5rem;
+$input-btn-padding-x:.75rem;
+$input-btn-border-width:0;
+
+
+html{
+  font-size: 300%;
+}
