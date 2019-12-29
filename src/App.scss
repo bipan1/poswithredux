@@ -4,6 +4,7 @@
 @import './scss/abstracts/variables';
 @import './scss/vendor/bootstrap';
 @import './scss/abstracts/functions';
+@import './style.css';
 
 //for react slick carousel
 
@@ -11,4 +12,5 @@
 @import "~slick-carousel/slick/slick.css"; 
 @import "~slick-carousel/slick/slick-theme.css";
 
-@import './scss/components/card'
+@import './scss/components/card';
+@import './scss/components/form';

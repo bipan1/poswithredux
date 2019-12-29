@@ -1,0 +1,63 @@
+.radio{
+  &-size{
+    input[type='radio']{
+      display: none;
+
+      &:checked + label{
+        background-color: $yellow;
+        color: white;
+        border :0.0625rem solid $yellow;
+        
+      }
+    }
+    label{
+      border :0.0625rem dashed $gray-900;
+      padding:0 .75rem;
+      border-radius: 1.5rem;
+    }
+  }
+
+  &-color{
+    input[type='radio']{
+      display: none;
+
+      &:checked + label{
+       
+       border:0.125rem solid $yellow;
+        
+      }
+    }
+    label{
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      transition: ease-in .2s;
+    
+    }
+  }
+}
+
+.btn{
+  &-quantity{
+    border: 0;
+    outline: 0;
+    width: 1.125rem;
+    height: 1.125rem;
+    border-radius: 50%;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+   
+    i{
+      font-size: .5rem;
+      display: block;
+    }
+  }
+}
+
+.input{
+  &-product{
+    font-size: .875rem;
+  
+  }
+}
