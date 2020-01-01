@@ -9,6 +9,7 @@ import Bubble from '../image/bubble.png'
 import ProductHighLight from '../components/ProductHighLight'
 import ProductNavigation from "../components/ProductNavigation";
 import ProductSelection from '../components/ProductSelection'
+import Footer from '../components/Footer'
 
 export default class ProductDescription extends Component {
   
@@ -34,7 +35,8 @@ export default class ProductDescription extends Component {
     this.setState((prevState)=>{
       
         return{
-          quantity:prevState.quantity + 1
+          quantity:prevState.quantity + 1,
+          openProductSelection:true,
         }
       
     })
@@ -51,12 +53,12 @@ export default class ProductDescription extends Component {
   }
 
   render() {
-    console.log(this.state)
+  
     return (
       <div className="mt-3 position-relative">
         <img src={Bubble} alt="Layout Design" className="img-bubble"/>
        
-      {(this.state.quantity > 1)?<ProductSelection/>:null}
+      {this.state.openProductSelection ?<ProductSelection/>:null}
 
         <Slider
           asNavFor={this.state.nav2}
@@ -186,6 +188,8 @@ export default class ProductDescription extends Component {
           </div>
         
         </Slider>
+        <Footer/>
+      
       </div>
     );
   }

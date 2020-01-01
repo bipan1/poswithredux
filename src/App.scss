@@ -6,11 +6,24 @@
 @import './scss/abstracts/functions';
 @import './style.css';
 
+//utilities
+
+@import './scss/utilities/utilities';
+
 //for react slick carousel
 
 
 @import "~slick-carousel/slick/slick.css"; 
 @import "~slick-carousel/slick/slick-theme.css";
 
+
+//layouts
+
+@import './scss/layouts/header';
+@import './scss/layouts/footer';
+
+
+
 @import './scss/components/card';
 @import './scss/components/form';
+@import './scss/components/tab';
