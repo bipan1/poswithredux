@@ -98,4 +98,18 @@
       color: $dark;
     }
   }
+
+  &-home{
+    font-size: .875rem;
+    color: $dark;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,0);
+    background-color: white;
+    padding:.5rem 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    box-shadow: 0 0.0625rem .25rem rgba(0,0,0,.08);
+  }
 }

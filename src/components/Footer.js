@@ -24,7 +24,7 @@ const Footer = () => {
           <p>$ 0.00</p>
         </div>
 
-        <div>
+        <div className="ml-auto">
           <button className="btn btn-warning">View</button>
         </div>
 

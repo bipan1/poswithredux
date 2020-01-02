@@ -7,10 +7,12 @@ import SkirtImage from '../image/skirts.png';
 import BagImage from '../image/bags.png';
 import PurseImage from '../image/purse.png';
 import CategoryCard from '../components/CategoryCard'
-
+import Header from '../components/Header'
 
 const Category = ()=>{
   return (
+  <>
+  <Header/>
     <div className="container mt-4">
     <div className="row">
       <div className="col">
@@ -42,6 +44,7 @@ const Category = ()=>{
       </div>
     </div>
   </div>
+  </>
 
 
   )

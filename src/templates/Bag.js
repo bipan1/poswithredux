@@ -3,9 +3,17 @@ import Avatar from '../image/avatar.png'
 import Bubble from '../image/bubble.png'
 import Product1 from '../image/product1.png'
 
+import Header from '../components/Header'
+
 const Bag = () => {
   return (
-    <div className="position-relative">
+    
+
+    <>
+
+    <Header/>
+
+      <div className="position-relative">
       <img src={Bubble} alt="Layout Design" className="img-bubble" />
       <div className="container mt-4 mb-3 d-flex justify-content-between">
         <div className="img-avatar">
@@ -136,6 +144,10 @@ const Bag = () => {
       </footer>
 
     </div>
+  
+  
+    </>
+  
   )
 }
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import Avatar from '../image/avatar.png'
 import Product1 from '../image/product1.png';
-import { Link } from 'react-router-dom'
+
 
 
 const ProductSelection = () => {

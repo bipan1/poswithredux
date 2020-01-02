@@ -139,12 +139,14 @@
 
     button{
       position: absolute;
-      bottom: -.5rem;
+      bottom: -.4rem;
       right: 0;
       min-width: 5.3125rem;
       font-size: .75rem;
       text-align: left;
       border-radius: .25rem;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
 
   }
@@ -198,6 +200,7 @@
     background-color: white;
     z-index:1000;
     padding: 1rem;
+   
   }
 }
 
@@ -223,6 +226,22 @@
       border-left: 40px solid transparent;
     }
 
+    
+  }
+
+  &_home{
+    .slick-current{
+      &:before{
+        display: none;
+      }
+    }
+
+    
+      .product-navigation{
+        img{
+          margin-top: 0;
+        }
+      }
     
   }
 }

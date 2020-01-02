@@ -10,6 +10,7 @@ import ProductHighLight from '../components/ProductHighLight'
 import ProductNavigation from "../components/ProductNavigation";
 import ProductSelection from '../components/ProductSelection'
 import Footer from '../components/Footer'
+import Header from '../components/Header'
 
 export default class ProductDescription extends Component {
   
@@ -55,6 +56,9 @@ export default class ProductDescription extends Component {
   render() {
   
     return (
+      <>
+
+      <Header/>
       <div className="mt-3 position-relative">
         <img src={Bubble} alt="Layout Design" className="img-bubble"/>
        
@@ -191,6 +195,9 @@ export default class ProductDescription extends Component {
         <Footer/>
       
       </div>
+    
+    
+      </>
     );
   }
 }

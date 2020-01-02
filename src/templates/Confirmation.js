@@ -3,8 +3,13 @@ import Avatar from '../image/avatar.png'
 import Bubble from '../image/bubble.png'
 import Bag from '../image/bag.png'
 
+import Header  from '../components/Header'
+
 const Confirmation = ()=>{
   return (
+    <>
+
+    <Header/>
     <div className="position-relative">
       <img src={Bubble} alt="Layout Design" className="img-bubble" />
       <img src={Bag} alt="Shopping Bag" className="img-bag"/>
@@ -20,7 +25,10 @@ const Confirmation = ()=>{
    
 
     </div>
-  )
+ 
+    </>
+ 
+ )
 }
 
 
