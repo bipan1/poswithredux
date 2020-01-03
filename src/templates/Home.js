@@ -1,30 +1,21 @@
 import React from 'react';
 import Slider from "react-slick";
 import { loadModels, getFullFaceDescription} from '../api/face';
-import axios from 'axios';
+import {connect} from 'react-redux';
+import ProductNavigation from "../components/ProductNavigation";
+import Webcam from 'react-webcam';
+import { Redirect } from 'react-router-dom';
+import {fetchApi, setReidrectFlag} from '../redux';
+
 import Product1 from '../image/product1.png'
 import Product2 from '../image/product2.png'
 import Product3 from '../image/product3.png'
 import Product4 from '../image/product4.png'
 import Product5 from '../image/product5.png'
-import ProductNavigation from "../components/ProductNavigation";
-import Webcam from 'react-webcam';
-import { Redirect } from 'react-router-dom';
 
 const inputSize = 160;
 
 class Home extends React.Component{
-  constructor(props) {
-    super(props)
-  
-    this.state = {
-      fullDescription: null,
-      primaryList : [],
-      secondaryList : [],
-      flag : false    //flag to render slider child
-       
-    }
-  }
 
   setRef = webcam => {
     this.webcam = webcam;
@@ -39,20 +30,20 @@ class Home extends React.Component{
       this.handleProcessing();
     }, 2000);
   }
+
   componentDidMount() {
     this.initFaceDetection()
   }
 
-  handleProcessing = async() => {     // function to detect face
+  handleProcessing = async() => {
+    let fullDescription = [];     // function to detect face
     await getFullFaceDescription(
         this.webcam.getScreenshot(),
         inputSize
     ).then(fullDesc => {
-        this.setState({
-            fullDescription : fullDesc
-        })
-        console.log(this.state.fullDescription)
-        if(this.state.fullDescription.length === 0){
+        fullDescription = fullDesc
+        console.log(fullDescription)
+        if(fullDescription.length === 0){
             console.log("Face not detected.")
         }
         else {
@@ -82,40 +73,22 @@ class Home extends React.Component{
     }
     const file = list.map((image) => base64ToBlob(image.split(',')[1], 'file.png'))
 
-    // from data 
     let formdata = new FormData();
 
     formdata.append('file', file[0])
     formdata.append('file', file[1])
     formdata.append('file', file[2])
-    //AI api call
-    axios.post("http://192.168.80.20:8001/gender",formdata)
-    .then(response => {
-        this.setState({
-            primaryList : response.data[0],
-            secondaryList : response.data[1],
-            flag : true
-        });
-    })
-    .catch(error => {
-      this.initFaceDetection()
-      console.log(error)
-    })
-  }
-  
-  handleClick = () => {
-    this.setState({
-      flag : true
-    })
+
+    this.props.fetchApi(formdata);
   }
   
   render () {
 
-    if(this.state.flag === true) {
+    if(this.props.apidata.redirectFlag === true) {
       return <Redirect to={{
         pathname : '/category',
         state : {
-          state : this.props.primaryList
+          state : this.props.apidata.primaryList
         }
       }}/>
     }
@@ -150,7 +123,6 @@ class Home extends React.Component{
                 arrows={false}
                 centerMode={false}
                 className="slick-thumb slick-thumb_home"
-  
               >
                 <div className="item">
                   <ProductNavigation image={Product1} />
@@ -167,17 +139,32 @@ class Home extends React.Component{
                 <div>
                   <ProductNavigation image={Product5} />
                 </div>
-  
               </Slider>
-  
             </div>
-            <div className="col-2">
-              <button onClick={this.handleClick} className="btn btn-warning text-white ">View more</button>
-            </div>
+            {
+              this.props.apidata.flag && 
+              <div className="col-2">
+                <button onClick={this.props.setReidrectFlag} className="btn btn-warning text-white ">View more</button>
+              </div>
+            }
           </div>
         </div>
       </main>
     )
   }
 }
-export default Home;
+
+const mapStateToProps = state => {
+  return {
+      apidata : state.home
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+      fetchApi : (formdata) => dispatch(fetchApi(formdata)),
+      setReidrectFlag : () => dispatch(setReidrectFlag())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
