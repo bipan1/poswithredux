@@ -1,53 +1,66 @@
-import React from 'react'
-import FurImage from '../image/fur.png';
-import PantImage from '../image/pants.png';
-import LeggingsImage from '../image/leggings.png';
-import ShoeImage from '../image/shoes.png';
-import SkirtImage from '../image/skirts.png';
-import BagImage from '../image/bags.png';
-import PurseImage from '../image/purse.png';
-import CategoryCard from '../components/CategoryCard'
-import Header from '../components/Header'
+import React from 'react';
+import CategoryCard from '../components/CategoryCard';
+import Header from '../components/Header';
 
-const Category = ()=>{
-  return (
-  <>
-  <Header/>
-    <div className="container mt-4">
-    <div className="row">
-      <div className="col">
-        <CategoryCard title="Fur Coats" image={FurImage} background="bg-brown"/>
-      </div>
-    </div>
+class Category extends React.Component{
 
-    <div className="row">
-      <div className="col-6">
-        <CategoryCard title="Pants" image={PantImage} background="bg-info"/>
-      </div>
-      <div className="col-6">
-        <CategoryCard title="Skirts" image={SkirtImage} background="bg-pitch"/>
-      </div>
-      <div className="col-6">
-        <CategoryCard title="Bags" image={BagImage} background="bg-orange"/>
-      </div>
-      <div className="col-6">
-        <CategoryCard title="Shoes" image={ShoeImage} background="bg-white"/>
-      </div>
-      <div className="col-6">
-        <CategoryCard title="Leggings" image={LeggingsImage} background="bg-pink"/>
-      </div>
-    
-    
-      
-      <div className="col-6">
-        <CategoryCard title="Purse" image={PurseImage} background="bg-light"/>
-      </div>
-    </div>
-  </div>
-  </>
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       primaryList : [
+         {
+           "category" : "coats & jackets",
+           "image" : "http://13.90.151.82:8000/media/images/products/2019/05/IMG_8051new.jpg"
+         },
+         {
+          "category" : "Hats",
+          "image" : "http://13.90.151.82:8000/media/images/products/2019/05/IMG_8054.jpg"
+         },
+         {
+           "category" : "headbands",
+           "image" : "http://13.90.151.82:8000/media/images/products/2019/05/IMG_8054.jpg"
+         }
+       ],
 
+       color : ["bg-brown", "bg-info", "bg-pitch", "bg-orange", "bg-pink", "bg-light"]
+    }
+  }
+  
+  render() {
+    const {color} = this.state;
+    // const {primaryList} = this.props.location.state;
+    // const newList = [...primaryList]
+    //newList.shift();
+    const newList = [...this.state.primaryList];
+    newList.shift();
 
-  )
+    return (
+      <>
+        <Header/>
+          <div className="container mt-4">
+          <div className="row">
+            <div className="col">
+              <CategoryCard title={this.state.primaryList[0].category} image={this.state.primaryList[0].image} 
+                background={color[Math.floor(Math.random()*color.length)]}/>
+            </div>
+          </div>
+
+          <div className="row">
+            {
+              newList.map(item =>{
+                return(
+                  <div className="col-6">
+                    <CategoryCard title={item.category} image={item.image} 
+                      background={color[Math.floor(Math.random()*color.length)]}/>
+                  </div>
+                )
+              })
+            }
+          </div>
+        </div>
+      </>
+    )
+  }
 }
-
 export default Category;

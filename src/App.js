@@ -14,7 +14,6 @@ import './App.scss';
 
 
 
-
 function App() {
 
  
@@ -34,8 +33,6 @@ function App() {
       </Switch>
       
     </React.Fragment>
-
-
     
   </BrowserRouter>
      
